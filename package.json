@@ -1,9 +1,37 @@
 {
   "name": "figr-frontend-assignment",
   "private": true,
-  "description": "Starter kit for the Figr frontend engineer assignment",
-  "engines": { "node": ">=18" },
+  "type": "module",
+  "description": "Design-tool board viewer: live cross-origin previews with a host-drawn inspection layer",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "backend": "node backend/server.js"
+    "dev": "concurrently -k -n api,web -c blue,magenta \"npm:backend\" \"npm:web\"",
+    "start": "npm run dev",
+    "backend": "node backend/server.js",
+    "web": "vite",
+    "preview": "vite preview",
+    "build": "tsc -p tsconfig.json && vite build",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "immer": "^11.1.18",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.5",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.3"
   }
 }
